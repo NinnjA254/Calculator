@@ -1,0 +1,132 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+@font-face {
+    font-family: 'digital';
+    src: url('fonts/DS-DIGIB.TTF');
+}
+
+
+   
+
+h1{
+    background-color: rgba(189, 142, 72,1);
+    padding:5px;
+    border-radius:5px;
+    box-shadow: 0 0 10px 1px rgba(189, 142, 72, 0.3);
+
+
+}
+
+body{
+    background-color: #202124;
+    
+}
+
+#calculator-container{
+    display:flex;
+    flex-direction: column;
+    border:1px solid transparent;
+    justify-content: center;
+    align-items:center;
+}
+
+#display{
+    min-height:100px;
+    max-height: 300px;
+    width:600px;
+    border:3px solid rgba(0, 255, 255, 1);
+    
+    background: linear-gradient(to right, rgba(189, 142, 72, 0.1), rgba(14, 107, 14, 0.1) ); 
+    box-shadow: 0 0 10px 2px rgba(0, 255, 255, 0.2) inset;
+    border-radius:5px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    color:#e6fdf6;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+
+    padding:10px;
+
+    word-wrap: break-word;
+    word-break:break-all;
+
+    
+
+    
+    
+}
+
+#display > #secondary-display{
+    font-family:digital;
+    font-size:1.5rem;
+    
+    
+}
+
+#display > #primary-display{
+    font-family: digital;
+    font-size: 2.5rem;
+    
+}
+
+#buttons-container{
+
+    border:1px solid #0e6b0e;
+    border-radius:5px;
+}
+
+#special-signs-and-clear{
+    display:flex;
+    width:600px;
+}
+
+#main-buttons{
+    display:flex;
+    
+}
+
+#numbers{
+    display: grid;
+    grid-template-columns: repeat(3,150px);
+    grid-template-rows: repeat(4,50px);
+    
+    
+}
+
+#signs{
+    display:flex;
+    flex-direction:column;
+}
+
+button{
+    height: 50px;
+    width:150px;
+    max-width: 150px;
+    border-radius: 5px;
+    margin:0px;
+    background-color: #aa8041;
+    font-weight: 800;
+    cursor:pointer;
+    color:rgb(14, 13, 13);
+    
+    
+    
+    
+}
+
+button:hover{
+    background-color: #bd8e4896;
+}
+
+#ac-and-clear{
+    display:flex;
+    flex-direction: column;
+    height:50px
+}
+
