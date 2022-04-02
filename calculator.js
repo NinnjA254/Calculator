@@ -13,6 +13,7 @@ const evalButton = document.getElementById("equals");
 var openingBracketCount = 0;
 
 var addPoint = true;
+let lastOperationIsEval = false; //this variable will be used to control calculator behavior after eval is called
 
 var operatorSet = ["+", "-", "*", "X", "÷", "%"];      //added "x" because it represents "*" on the buttons.
 var multiplicativeOperatorSet = ["*","X", "÷", "%"];
@@ -34,12 +35,9 @@ function replaceChar(str,x,y){
 }
 
 class Calculator{
-    /*constructor(primaryDisplay, secondaryDisplay){
-        this.primaryDisplay = primaryDisplay;
-        this.secondaryDisplay = secondaryDisplay;
+    constructor(){
         this.expression = "";
-        
-    } */
+    }
 
     appendNumber(j){
         if(lastOperationIsEval){
@@ -218,11 +216,16 @@ acButton.addEventListener("click",() =>{
 
 //delete functionality
 deleteButton.addEventListener("click", () => {
-    if (primaryDisplay.innerText[primaryDisplay.innerText.length - 1] == "."){
-        addPoint = true;
-        console.log(addPoint);
+    if(!lastOperationIsEval){
+        if (primaryDisplay.innerText[primaryDisplay.innerText.length - 1] == "."){
+            addPoint = true;
+            lastOperationIsEval = false;
+            console.log(addPoint);
+    
+        }
+        calculator1.delete();
     }
-    calculator1.delete();
+    
 })
 
 //appending numbers
@@ -238,7 +241,6 @@ point.addEventListener("click",() =>{
     if(addPoint){
         calculator1.appendPoint(point.innerText);
         addPoint = false;
-
         lastOperationIsEval = false;
     }
 });
@@ -247,7 +249,6 @@ point.addEventListener("click",() =>{
 openingBracket.addEventListener("click", () => {
     if(primaryDisplay.innerText[primaryDisplay.innerText.length - 1] !="."){
         calculator1.appendBracket(openingBracket.innerText);
-
         openingBracketCount++;
         displayNumberOfUnbalancedBrackets();
         addPoint = true;
@@ -263,7 +264,6 @@ closingBracket.addEventListener("click", () => {
             if (primaryDisplay.innerText == 0){
                 if(appendClosingBracket){
                     calculator1.appendBracket(closingBracket.innerText);
-                    
                     openingBracketCount--; 
                     displayNumberOfUnbalancedBrackets(); 
                     addPoint = true;
@@ -272,7 +272,6 @@ closingBracket.addEventListener("click", () => {
             }
             else{
                 calculator1.appendBracket(closingBracket.innerText);
-    
                 openingBracketCount--; 
                 displayNumberOfUnbalancedBrackets(); 
                 addPoint = true; 
@@ -305,7 +304,6 @@ for(let operator of operatorButtons){
                     if(secondaryDisplay.innerText.length > 0){
                         if (!(multiplicativeOperatorDenierSet.includes(secondaryDisplay.innerText[secondaryDisplay.innerText.length - 1])) ){
                             calculator1.appendOperator(operator.innerText);
-        
                             addPoint = true;
                             lastOperationIsEval = false;
                         }
@@ -324,7 +322,6 @@ for(let operator of operatorButtons){
 }
 
 //evaluate
-let lastOperationIsEval = false; //this variable will be used to control calculator behavior after eval is called
 evalButton.addEventListener("click", () => {
     if(openingBracketCount == 0 && primaryDisplay.innerText[primaryDisplay.innerText.length - 1] != "."){
         if(!lastOperationIsEval){
