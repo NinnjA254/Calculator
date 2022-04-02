@@ -326,9 +326,8 @@ evalButton.addEventListener("click", () => {
     if(openingBracketCount == 0 && primaryDisplay.innerText[primaryDisplay.innerText.length - 1] != "."){
         if(!lastOperationIsEval){
             calculator1.evaluate();
-
             lastOperationIsEval = true; 
-            addPoint = true;
+            addPoint = false;
         }
         
     }
